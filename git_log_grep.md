@@ -1,23 +1,28 @@
-2.4.1 
-Ответ:
-aefead2207ef7e2aa5dc81a34aedf0cad4c32545 Update CHANGELOG.md
+##2.4.1  
 
-Описание:
-sudo git log --oneline | grep aefea
-мне так привычнее)
+###Ответ:  
 
-2.4.2 
+aefead2207ef7e2aa5dc81a34aedf0cad4c32545 Update CHANGELOG.md  
+
+
+###Описание:  
+
+> sudo git log --oneline | grep aefea  
+#### мне так привычнее)  
+
+2.4.2
+----- 
 Ответ: v0.12.23
 
 Описание:
-sudo git show 85024d3
-commit 85024d3100126de36331c6982bfaac02cdab9e76 (tag: v0.12.23)
-Author: tf-release-bot <terraform@hashicorp.com>
-Date:   Thu Mar 5 20:56:10 2020 +0000
-
-    v0.12.23
-
-- в show эта информация присуттвует...
+> sudo git show 85024d3  
+> commit 85024d3100126de36331c6982bfaac02cdab9e76 (tag: v0.12.23)  
+> Author: tf-release-bot <terraform@hashicorp.com>  
+> Date:   Thu Mar 5 20:56:10 2020 +0000  
+>
+>    v0.12.23
+>
+####- в show эта информация присуттвует...
 
 2.4.3 
 Ответ:
