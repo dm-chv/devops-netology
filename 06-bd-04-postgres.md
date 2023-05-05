@@ -46,7 +46,7 @@ CREATE TABLE public.orders (
     title character varying(80) NOT NULL,
     price integer DEFAULT 0
 )PARTITION BY RANGE (price);</code>
-<code>
+<code>  
 CREATE TABLE public.orders_low PARTITION OF public.orders
     FOR VALUES FROM ('0') TO ('499');
 </code>  
@@ -59,6 +59,6 @@ CREATE TABLE public.orders_high PARTITION OF public.orders
 <i>Используя утилиту pg_dump, создайте бекап БД test_database.<\i>
 <code>
 pg_dump -U postgres -d test_database > /backup/test_database_dump.sql
-<\code>
+</code>
 <i>Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца title для таблиц test_database?</i>
 * можно для столбца тайтл использовать индекс "UNIQUE"
