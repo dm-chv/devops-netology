@@ -34,19 +34,19 @@ cores         = 2
 ### Задание 2
 * Замените все "хардкод" значения...
 
-![screen](/screen/7ter-2-2)
+![screen](/screen/7ter-2-2.png)
 
 ### Задание 3
 
 *Скопируйте блок ресурса и создайте с его помощью вторую ВМ(в файле main.tf): "netology-develop-platform-db" , cores = 2, memory = 2, core_fraction = 20. Объявите ее переменные с префиксом vm_db_ в том же файле('vms_platform.tf').  
 
-![screen](/screen/7ter-2-3)
+![screen](/screen/7ter-2-3.png)
 
 ### Задание 4
 * Объявите в файле outputs.tf output типа map, содержащий { instance_name = external_ip } для каждой из ВМ.
 * В качестве решения приложите вывод значений ip-адресов команды <b>terraform output</b>
 
-![screen](/screen/7ter-2-4)
+![screen](/screen/7ter-2-4.png)
 
 ### Задание 5
 1. В файле locals.tf опишите в одном local-блоке имя каждой ВМ, используйте интерполяцию ${..} с несколькими переменными по примеру из лекции.
@@ -55,7 +55,7 @@ cores         = 2
 
 <i>Если я всё правильно понял, то так как-то надо было сделать....</i>
 
-![screen](/screen/7ter-2-5
+![screen](/screen/7ter-2-5.png)
 
 ### Задание 6
 1. Вместо использования 3-х переменных ".._cores",".._memory",".._core_fraction" в блоке resources {...}, объедените их в переменные типа map с именами "vm_web_resources" и "vm_db_resources".
@@ -116,9 +116,9 @@ variable "metadata" {
     ssh-keys           = var.metadata["ssh"]
   }
 </code>
-3. Найдите и удалите все более не используемые переменные проекта.
+3. Найдите и удалите все более не используемые переменные проекта.  
 <i>Закомментировал всё лишнее...</i>
-4. Проверьте terraform plan (изменений быть не должно).
+4. Проверьте terraform plan (изменений быть не должно).  
 <i>Ok</i>
 <code>
 No changes. Your infrastructure matches the configuration.
@@ -126,11 +126,11 @@ Terraform has compared your real infrastructure against your configuration and f
 </code>
 
 ### Задание 7
-1. Напишите, какой командой можно отобразить второй элемент списка test_list?
+1. Напишите, какой командой можно отобразить второй элемент списка test_list?  
 <i>local.test_list[1]</i>
-2. Найдите длину списка test_list с помощью функции length(<имя переменной>).
+2. Найдите длину списка test_list с помощью функции length(<имя переменной>).  
 <i>length(local.test_list) </i>
-3. Напишите, какой командой можно отобразить значение ключа admin из map test_map ?
+3. Напишите, какой командой можно отобразить значение ключа admin из map test_map ?  
 <i>local.test_map["admin"]</i>
-4. Напишите interpolation выражение, результатом которого будет: "John is admin for production server based on OS ubuntu-20-04 with X vcpu, Y ram and Z virtual disks", используйте данные из переменных test_list, test_map, servers и функцию length() для подстановки значений.
+4. Напишите interpolation выражение, результатом которого будет: "John is admin for production server based on OS ubuntu-20-04 with X vcpu, Y ram and Z virtual disks", используйте данные из переменных test_list, test_map, servers и функцию length() для подстановки значений.  
 <i>Я принцип пониманию(как это делается в других языках программирования), но как это сделать в консоле терраформа - я не нашёл примера синтаксиса, если поделитесь ссылкой - буду признателен.</i>
