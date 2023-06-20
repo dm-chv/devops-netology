@@ -14,3 +14,28 @@
 
 <i>Done!</i>
 ![screen](/screen/7ter-3-2.png)
+
+### Задание 3
+1. Создайте 3 одинаковых виртуальных диска, размером 1 Гб с помощью ресурса yandex_compute_disk и мета-аргумента count в файле disk_vm.tf .
+```
+resource "yandex_compute_disk" "default" {
+    count = 3
+    name     = "disk-name-${count.index}"
+    type     = "network-hdd"
+    size = 1
+}
+```
+2. Создайте в том же файле одну ВМ c именем "storage" . Используйте блок dynamic secondary_disk{..} и мета-аргумент for_each для подключения созданных вами дополнительных дисков.
+```commandline
+    dynamic secondary_disk {
+        for_each    = yandex_compute_disk.hdd.*.id
+    content {
+      disk_id   = secondary_disk.value
+    }
+  }
+```
+
+### Задание 4
+1. В файле ansible.tf создайте inventory-файл для ansible. Используйте функцию tepmplatefile и файл-шаблон для создания ansible inventory-файла из лекции. Готовый код возьмите из демонстрации к лекции demonstration2. Передайте в него в качестве переменных группы виртуальных машин из задания 2.1, 2.2 и 3.2.(т.е. 5 ВМ)
+2. Инвентарь должен содержать 3 группы [webservers], [databases], [storage] и быть динамическим, т.е. обработать как группу из 2-х ВМ так и 999 ВМ.
+3. Выполните код. Приложите скриншот получившегося файла.
