@@ -1,3 +1,7 @@
+<hr>
+<a href="https://github.com/dm-chv/ter-homeworks/tree/main/03/src">Ссылка на на ветку terraform-03 в моём репозитории </a> 
+<hr>
+
 ### Задание 1
 1. Изучите проект.
 2. Заполните файл personal.auto.tfvars
@@ -41,3 +45,4 @@ resource "yandex_compute_disk" "default" {
 3. Выполните код. Приложите скриншот получившегося файла.
 <i>Done!</i>
 ![screen](/screen/7-ter-3-4.png)
+
