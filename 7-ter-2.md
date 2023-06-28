@@ -133,4 +133,5 @@ Terraform has compared your real infrastructure against your configuration and f
 3. Напишите, какой командой можно отобразить значение ключа admin из map test_map ?  
 <i>local.test_map["admin"]</i>
 4. Напишите interpolation выражение, результатом которого будет: "John is admin for production server based on OS ubuntu-20-04 with X vcpu, Y ram and Z virtual disks", используйте данные из переменных test_list, test_map, servers и функцию length() для подстановки значений.  
-<i>Я принцип пониманию(как это делается в других языках программирования), но как это сделать в консоле терраформа - я не нашёл примера синтаксиса, если поделитесь ссылкой - буду признателен.</i>
+
+<i>"${local.test_map.admin} is admin for ${local.test_list[2]} server based on ${local.servers.production.image} width ${local.servers.production.cpu} vcpu, ${local.servers.production.ram} ram and ${length(local.servers.production.disks[*])} virtual disks"</i>
