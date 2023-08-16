@@ -45,4 +45,4 @@ vector-01                  : ok=1    changed=0    unreachable=0    failed=0    s
 9. Подготовьте README.md-файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.  
 <a href="https://github.com/dm-chv/mnt-homeworks/blob/MNT-video/08-ansible-02-playbook/playbook/README.md">README.md-файл по playbook</a>
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-02-playbook` на фиксирующий коммит, в ответ предоставьте ссылку на него. 
-<a href="https://github.com/dm-chv/mnt-homeworks/tree/MNT-video/08-ansible-02-playbook/playbook">Готовый playbook</a>
+08-ansible-03-yandex
