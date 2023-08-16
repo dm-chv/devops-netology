@@ -56,6 +56,6 @@
 ---
 ### Решение:
 
-Мой репозиторий vector <a href="https://github.com/dm-chv/vector-role.git">HTTPS</a> | <a href="git@github.com:dm-chv/vector-role.git">SSH</a>  
-Мой репозиторий lighthouse <a href="https://github.com/dm-chv/lighthouse-role.git">HTTPS</a> | <a href="git@github.com:dm-chv/lighthouse-role.git">SSH</a>  
-Ссылка на переработанный <a href="https://github.com/dm-chv/mnt-homeworks/tree/MNT-video/08-ansible-02-playbook/playbook">playbook</a>  
+Мой репозиторий [vector](https://github.com/dm-chv/vector-role.git)  
+Мой репозиторий [lighthouse](https://github.com/dm-chv/lighthouse-role.git)  
+Ссылка на переработанный [playbook](https://github.com/dm-chv/mnt-homeworks/tree/MNT-video/08-ansible-02-playbook/playbook)  
