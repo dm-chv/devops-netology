@@ -130,8 +130,9 @@ INFO     Pruning extra files from scenario ephemeral directory
 </code>
 </details>
 
-7. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
-<i>Добавлен тег <b>[08-ansible-test-1.1.0](https://github.com/dm-chv/mnt-homeworks/tree/MNT-video/08-ansible-02-playbook/playbook/roles/vector)</b></i>
+7. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.  
+  
+<i>Добавлен тег <b>[08-ansible-test-1.1.0](https://github.com/dm-chv/mnt-homeworks/tree/MNT-video/08-ansible-02-playbook/playbook/roles/vector)</b></i>  
 После выполнения у вас должно получится два сценария molecule и один tox.ini файл в репозитории. Не забудьте указать в ответе теги решений Tox и Molecule заданий. В качестве решения пришлите ссылку на  ваш репозиторий и скриншоты этапов выполнения задания. 
 
 ---
