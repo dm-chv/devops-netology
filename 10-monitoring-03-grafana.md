@@ -47,7 +47,8 @@
 
 </details>
 Создайте Dashboard и в ней создайте Panels:
-<code>
+
+```commandline
 #утилизация CPU для nodeexporter (в процентах, 100-idle);
 avg by(instance)(rate(node_cpu_seconds_total{job="nodeexporter",mode="idle"}[$__rate_interval])) * 100
   
@@ -62,7 +63,9 @@ avg(node_memory_MemAvailable_bytes{instance="nodeexporter:9100", job="nodeexport
   
 #количество места на файловой системе.
 node_filesystem_free_bytes{fstype="ext4",instance="nodeexporter:9100",job="nodeexporter"}
-</code>
+
+```
+
 Для решения этого задания приведите promql-запросы для выдачи этих метрик, а также скриншот получившейся Dashboard.
 
 ![screen](/screen/10-monitoring-2-2.png)
