@@ -50,16 +50,16 @@
 <code>
 #утилизация CPU для nodeexporter (в процентах, 100-idle);
 avg by(instance)(rate(node_cpu_seconds_total{job="nodeexporter",mode="idle"}[$__rate_interval])) * 100
-
+  
 #CPULA 1/5/15;
 avg by (instance)(rate(node_load1{}[$__rate_interval]))
 avg by (instance)(rate(node_load5{}[$__rate_interval]))
 avg by (instance)(rate(node_load15{}[$__rate_interval]))
-
+  
 #количество свободной оперативной памяти;
 avg(node_memory_MemFree_bytes{instance="nodeexporter:9100",job="nodeexporter"})
 avg(node_memory_MemAvailable_bytes{instance="nodeexporter:9100", job="nodeexporter"})
-
+  
 #количество места на файловой системе.
 node_filesystem_free_bytes{fstype="ext4",instance="nodeexporter:9100",job="nodeexporter"}
 </code>
