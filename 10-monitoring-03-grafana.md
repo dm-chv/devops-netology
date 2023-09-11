@@ -89,8 +89,7 @@ node_filesystem_free_bytes{fstype="ext4",instance="nodeexporter:9100",job="nodee
 <details>
 <summary> листинг</summary>
 
-<code>
-{
+```{
   "annotations": {
     "list": [
       {
@@ -708,7 +707,7 @@ node_filesystem_free_bytes{fstype="ext4",instance="nodeexporter:9100",job="nodee
   "uid": "If2nCMiSk",
   "version": 4
 }
-</code>
+```
 </details>
 
 ---
