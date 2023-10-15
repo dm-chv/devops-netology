@@ -12,10 +12,10 @@
 
 ### Решение
 Количестов подов до масштабирования
-![screen](/screen/12-adminkub-03-1.png)
+![screen](/screen/12-adminkube-03-1.png)
 
 Количество подов после масштабирования
-![screen](/screen/12-adminkub-03-2.png)
+![screen](/screen/12-adminkube-03-2.png)
 
 Сервис, который обеспечивает доступ до реплик приложений
 
