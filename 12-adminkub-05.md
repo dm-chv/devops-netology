@@ -5,7 +5,7 @@
 <details>
 <summary>YAML Deployment и Service
 </summary>
-```
+```task
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -77,7 +77,7 @@ spec:
 <details>
 <summary>ingress
 </summary>
-```
+```task
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -113,7 +113,7 @@ spec:
 <details>
 <summary>deployment multitool
 </summary>
-```
+```task
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -151,7 +151,7 @@ spec:
 <details>
 <summary>deployment nginx
 </summary>
-```
+```task
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -186,7 +186,7 @@ spec:
     app: web
 ```
 </details>
-
+ 
 ![screen](/screen/12-adminkube-05-2.png)
 
 #
