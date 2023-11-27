@@ -6,6 +6,7 @@
 <summary>YAML Deployment и Service
 </summary>
 ```task
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -77,6 +78,7 @@ spec:
 <details>
 <summary>ingress
 </summary>
+
 ```task
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -113,6 +115,7 @@ spec:
 <details>
 <summary>deployment multitool
 </summary>
+
 ```task
 apiVersion: apps/v1
 kind: Deployment
@@ -151,6 +154,7 @@ spec:
 <details>
 <summary>deployment nginx
 </summary>
+
 ```task
 apiVersion: apps/v1
 kind: Deployment
