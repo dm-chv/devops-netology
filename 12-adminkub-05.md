@@ -105,6 +105,9 @@ spec:
                 port:
                   name: app
 ```
+
+
+
 </details>
 
 <details>
@@ -143,7 +146,6 @@ spec:
       port: 80
   selector:
     app: app
-
 ```
 </details>
 <details>
@@ -182,7 +184,6 @@ spec:
       port: 80
   selector:
     app: web
-
 ```
 </details>
 
