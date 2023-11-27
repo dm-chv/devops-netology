@@ -75,9 +75,114 @@ spec:
 ## Задание 2. Создать Ingress и обеспечить доступ к приложениям снаружи кластера
 
 <details>
-<summary>YAML Deployment и Service
+<summary>ingress
 </summary>
 ```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: lesson4
+  name: ingress-lesson4
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: ultra.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-svc
+                port:
+                  name: web
+          - path: /app
+            pathType: Prefix
+            backend:
+              service:
+                name: app-svc
+                port:
+                  name: app
+```
+</details>
+
+<details>
+<summary>deployment multitool
+</summary>
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-multitool
+  namespace: lesson4
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: multitool
+        image: wbitt/network-multitool
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-svc
+  namespace: lesson4
+spec:
+  ports:
+    - name: app
+      port: 80
+  selector:
+    app: app
+
+```
+</details>
+<details>
+<summary>deployment nginx
+</summary>
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: lesson4
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.19
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-svc
+  namespace: lesson4
+spec:
+  ports:
+    - name: web
+      port: 80
+  selector:
+    app: web
+
 ```
 </details>
 
