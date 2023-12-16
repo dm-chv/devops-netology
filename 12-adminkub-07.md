@@ -60,7 +60,7 @@ spec:
 </summary>
 
 ```task
-apiVersion: v1
+apiVersion: v1 
 kind: PersistentVolumeClaim
 metadata:
   name: pvc-manual
@@ -132,5 +132,5 @@ spec:
 ```
 </details>
 
-<i>Продемонстрировать возможность чтения и записи файла изнутри пода.</i>
+<i>Продемонстрировать возможность чтения и записи файла изнутри пода</i>
 ![screen](/screen/12-adminkube-07-5.png)
