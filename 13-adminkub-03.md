@@ -133,9 +133,9 @@ spec:
 ```
 </details>
 
-### NetworkPolicy
+### Описание политики, чтобы обеспечить доступ frontend -> backend -> cache. Другие виды подключений запрещены.
 <details>
-<summary>
+<summary>NetworkPolicy
 
 </summary>
 
