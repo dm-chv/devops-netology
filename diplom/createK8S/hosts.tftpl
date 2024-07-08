@@ -1,0 +1,24 @@
+---
+localmasterservers:
+  hosts:
+%{~ for i in masterservers ~}
+
+    local-${i["name"]}:
+      ansible_host: ${i["network_interface"][0]["ip_address"]} 
+%{~ endfor ~}
+
+masterservers:
+  hosts:
+%{~ for i in masterservers ~}
+
+    ${i["name"]}:
+      ansible_host: ${i["network_interface"][0]["nat_ip_address"]} 
+%{~ endfor ~}
+
+workerservers:
+  hosts:
+%{~ for i in workerservers ~}
+
+    ${i["name"]}:
+      ansible_host: ${i["network_interface"][0]["nat_ip_address"]} 
+%{~ endfor ~}

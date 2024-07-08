@@ -1,0 +1,32 @@
+- name: config monitoring and test app
+  hosts:
+    masterservers
+  become: true
+  tasks:
+    - name: git clone Kubernetes cluster
+      ansible.builtin.command: git clone https://github.com/prometheus-operator/kube-prometheus.git
+      args:
+        creates: "/tmp/kube-prometheus"
+        chdir: /tmp
+
+    - name: install Kubernetes cluster
+      ansible.builtin.command: "{{ item }}"
+      with_items:
+        - kubectl apply --server-side -f manifests/setup
+        - kubectl wait --for condition=Established --all CustomResourceDefinition --namespace=monitoring
+        - kubectl apply -f manifests/
+        - tee /tmp/kube-prometheus/cluster-ok
+      args:
+        chdir: /tmp/kube-prometheus
+        creates: "/tmp/kube-prometheus/cluster-ok"
+
+    - name: copy pod config for app
+      ansible.builtin.copy:
+        src: "../kube/any-app.yml"
+        dest: "/tmp/any-app.yml"
+        mode: '0755'
+
+    - name: install any-app POD
+      ansible.builtin.command: kubectl apply -f /tmp/any-app.yml
+      args:
+        chdir: /tmp

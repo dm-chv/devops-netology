@@ -1,0 +1,131 @@
+---
+- name: config all servers
+  hosts:
+    masterservers
+    workerservers
+  become: true
+  tasks:
+    - block:
+      - name: test
+        debug:
+          msg: "{{ ansible_ssh_host }}"
+      - name: Remove default Debian bullshit
+        ansible.builtin.apt:
+          name:
+            - apparmor
+            - reportbug
+            - unattended-upgrades
+            - debian-faq
+            - doc-debian
+            - python3-reportbug
+          autoremove: true
+          state: absent
+          purge: true
+      - name: APT cleanup
+        ansible.builtin.apt:
+          autoremove: true
+          purge: true
+      - name: Install packages
+        ansible.builtin.apt:
+          name:
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - htop
+            - git
+          state: latest
+          update_cache: true
+          install_recommends: false
+      - name: create apt keyrings directory
+        file:
+          path: /etc/apt/keyrings
+          state: directory
+          owner: root
+          group: root
+          mode: '0755'
+      - name: Run a curl
+        ansible.builtin.shell: curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+      - name: Run a command
+        ansible.builtin.shell: echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+      - name: Install kube 
+        ansible.builtin.apt:
+          name:
+            - kubelet
+            - kubeadm
+            - kubectl
+            - containerd
+          state: latest
+          update_cache: true
+          install_recommends: false
+      - name: iptables settings
+        ansible.builtin.shell: sudo modprobe br_netfilter
+      - name: iptables settings
+        ansible.builtin.shell: sudo sysctl net.bridge.bridge-nf-call-iptables=1
+      - name: iptables settings
+        ansible.builtin.shell: sudo sysctl -w net.ipv4.ip_forward=1
+      - name: Auto extentions kubectl
+        command: echo 'source <(kubectl completion bash)' >>~/.bashrc
+
+   # Kubelet will not start if the system has swap enabled, so we are disabling swap using the below code
+      - name: Remove swapfile from /etc/fstab
+        mount:
+          name: "{{ item }}"
+          fstype: swap
+          state: absent
+        with_items:
+          - swap
+          - none
+
+      - name: Disable swap
+        command: swapoff -a
+        when: ansible_swaptotal_mb > 0
+
+      - name: Restart kubelet
+        service:
+          name: kubelet
+          daemon_reload: yes
+          state: restarted
+      
+- name: config masternode
+  hosts:
+    masterservers
+  become: true
+  tasks:
+    - name: Initialize the Kubernetes cluster using kubeadm
+      command: kubeadm init --pod-network-cidr=192.168.111.0/24 --apiserver-cert-extra-sans="{{ ansible_ssh_host }}"
+    - name: create apt kub directory
+      file:
+        path: ~/.kube
+        state: directory
+        mode: '0755'
+    - name: Copy kube config
+      copy: 
+        src: /etc/kubernetes/admin.conf 
+        dest: ~/.kube/config
+        remote_src: yes
+    - name: Kub restart
+      command: systemctl restart kube*
+    - name: Install pod network
+      command: kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+    - name: Generate join command
+      command: kubeadm token create --print-join-command
+      register: join_command
+
+    - name: Copy join command to local file
+      local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="./join-command"
+  handlers:
+    - name: docker status
+      service: name=docker state=started
+
+  # NODES
+
+- name: config all servers
+  hosts:
+    workerservers
+  become: true
+  tasks:
+  - name: Copy the join command to server location
+    copy: src=join-command dest=/tmp/join-command.sh mode=0777
+
+  - name: Join the node to cluster
+    command: sh /tmp/join-command.sh
