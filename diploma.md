@@ -32,10 +32,10 @@
 
 ## 6. Ссылка на тестовое приложение и веб интерфейс Grafana с данными доступа.
  
-[grafana:](http://158.160.114.185:30003) 
+[grafana:](http://158.160.114.185:30003)  
     admin:LrR>MG,7T?>uNKy
 ![screen](/diplom/screenshots/diploma-grafana.png)
 
     test-app:
-[grafana:](http://158.160.114.185:30004) 
+[test-app:](http://158.160.114.185:30004) 
 ![screen](/diplom/screenshots/diploma-kub-app.png)
