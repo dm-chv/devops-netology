@@ -28,7 +28,7 @@
 [DockerHub](https://hub.docker.com/repository/docker/chaltsev/simpleapp/general)  
 
 ## 5. Репозиторий с конфигурацией Kubernetes кластера.
-    [config k8s](https://github.com/dm-chv/devops-netology/tree/main//diplom/createK8S/ansible-k8s-monitoring-and-test-app.yml)
+[config k8s](https://github.com/dm-chv/devops-netology/tree/main//diplom/createK8S/ansible-k8s-monitoring-and-test-app.yml)
 
 ## 6. Ссылка на тестовое приложение и веб интерфейс Grafana с данными доступа.
  
